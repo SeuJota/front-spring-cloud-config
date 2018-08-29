@@ -1,10 +1,10 @@
 server:
-  port: 8060
+  port: 8282
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8061/eureka/
+      defaultZone: http://localhost:8181/eureka/
 
 logging:
   pattern:
@@ -19,5 +19,8 @@ spring:
       routes:
       - id: front-project-service-sum
         uri: lb://service-sum
+        predicates:
+        - Path=/sum/**
       - id: front-project-service-average
         uri: lb://service-average
+        - Path=/average/**
